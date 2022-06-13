@@ -11,10 +11,13 @@ function weatherApi() {
         .then(function (data) {
             let weatherData = data;
             console.log(weatherData);
+            // sets date for city
             const today = new Date(weatherData.dt * 1000)
             const day = today.getDate();
             const month = today.getMonth() + 1;
             const year = today.getFullYear();
+
+            // current weather elements
             const currentWeatherContainer = $('#today-weather');
             const weatherIcon = document.createElement('img');
             const currentTemp = document.createElement('p');
@@ -49,13 +52,13 @@ function weatherApi() {
             console.log(longitude);
             fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + lattitude + "&lon=" + longitude + "&units=imperial&APPID=10e29da6a649e69fabcd957dd59a3c59&")
                 .then(function(response) {
-                    console.log(fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + lattitude + "&lon=" + longitude + "&APPID=10e29da6a649e69fabcd957dd59a3c59&cnt=1"))
                     return response.json;
                 
                 }) 
                 .then(function(data) {
                     let uvData = data;
                     console.log(data);
+                    // says uvi not defined reading uvi
                     uvIndex = uvData.current.uvi;
                     let currentUvIndex = document.createElement("span");
                     
